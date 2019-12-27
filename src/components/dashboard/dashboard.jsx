@@ -18,6 +18,20 @@ export default class Dashboard extends React.Component {
         };
     }
 
+    createAccount = () => {
+        return fetch('http://192.168.43.55/accounts/', {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username: 'spayker',
+              password: 'qwerty',
+            }),
+        });
+    }
+
     searchBluetoothDevices = () => {
         this.setState({ isConnectedWithMiBand: true})
         NativeModules.DeviceConnector.enableBTAndDiscover( (error, deviceBondLevel) => {
@@ -125,6 +139,13 @@ export default class Dashboard extends React.Component {
                             <Text style={styles.buttonText}>Start HR Measurement</Text>
                         </TouchableOpacity>
                     )}
+
+                    <View style={styles.spacing}/>
+                    
+                    <TouchableOpacity style={styles.buttonEnabled} onPress={this.createAccount} disabled={false}>
+                        <Text style={styles.buttonText}>Create New Account</Text>
+                    </TouchableOpacity>
+
                 </View>
             </View>
         );
