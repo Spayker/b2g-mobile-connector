@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">mconnector</string>
+    <string name="app_name">b2gm</string>
     <string name="mi_band_device_name">Mi Band 3</string>
     <string name="app_mi_band_connect_preferences">MiBandConnectPreferences</string>
     <string name="app_mi_band_last_connected_device_mac_address_key">lastMiBandConnectedDeviceMacAddress</string>
