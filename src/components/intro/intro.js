@@ -45,7 +45,7 @@ export default class Intro extends React.Component {
               onChangeText={(passwordValue) => this.setState({passwordValue})}
               onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/>
 
-            <Button name="Login" title="Login" style={styles.loginButton} onPress={() => {this.doSomeStuff()}}/>
+            <Button name="Login" title="Login" style={styles.loginButton} onPress={() => {this.props.navigation.navigate('MainMenu')}}/>
 
           </View>
           

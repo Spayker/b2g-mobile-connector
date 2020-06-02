@@ -58,12 +58,12 @@ export default class SignUpEmail extends React.Component {
               onChangeText={(passwordValue) => this.setState({passwordValue})}
               onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/>
 
-            <Button name="Login" title="Login" style={styles.loginButton} onPress={() => {this.doSomeStuff()}}/>
+            <Button name="Login" title="Login" style={styles.loginButton} onPress={() => {this.props.navigation.navigate('MainMenu')}}/>
 
           </View>
           
           <View style={styles.textArea}>
-            <Text style={styles.link} onPress={() => {this.doSomeStuff()}}>Already have an account?</Text>
+            <Text style={styles.link} onPress={() => {this.props.navigation.navigate('Intro')}}>Already have an account?</Text>
           </View>
 
         </View>
