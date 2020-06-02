@@ -10,7 +10,7 @@ export default styles = StyleSheet.create({
 
     image:{
         alignSelf: "center",
-        marginTop: 115
+        marginTop: 50
     },
 
     container: {
