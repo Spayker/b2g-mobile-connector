@@ -5,7 +5,7 @@ export default styles = StyleSheet.create({
     container:{
         flex: 1,
         justifyContent: "center",
-        backgroundColor: "white",
+        backgroundColor: "#333333",
         padding: 15,
         paddingBottom: 75
     },
@@ -21,6 +21,27 @@ export default styles = StyleSheet.create({
         alignSelf: "center",
         marginTop: 24,
         marginBottom: 50
-    }
+    },
+
+    listTrainingContainer:{
+        flex: 1,
+        flexDirection: "row",
+        alignItems: 'center',
+        justifyContent: "space-between",
+    },
+
+    listTrainingColumnData:{
+        alignSelf: "center",
+        flexDirection: "column",
+        justifyContent: "space-between",
+    },
+
+
+    item: {
+        padding: 10,
+        fontSize: 18,
+        height: 44,
+        color: "white",
+      }
 
 });
