@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'mconnector' do
-  # Pods for mconnector
+target 'b2gm' do
+  # Pods for b2gm
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -36,7 +36,7 @@ target 'mconnector' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
-  target 'mconnectorTests' do
+  target 'b2gmTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -44,10 +44,10 @@ target 'mconnector' do
   use_native_modules!
 end
 
-target 'mconnector-tvOS' do
-  # Pods for mconnector-tvOS
+target 'b2gm-tvOS' do
+  # Pods for b2gm-tvOS
 
-  target 'mconnector-tvOSTests' do
+  target 'b2gm-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
