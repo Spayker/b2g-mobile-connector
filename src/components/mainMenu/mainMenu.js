@@ -12,24 +12,24 @@ export default class MainMenu extends React.Component {
   tabs = [
     {
       key: 'home',
-      icon: 'animation-play',
+      icon: 'home',
       label: 'Home',
       barColor: '#040d14',
-      pressColor: '#2979ff'
+      pressColor: '#24C324'
     },
     {
       key: 'deviceList',
       icon: 'navigation',
       label: 'Devices',
       barColor: '#040d14',
-      pressColor: '#2979ff'
+      pressColor: '#24C324'
     },
     {
       key: 'account',
       icon: 'account',
       label: 'Account',
       barColor: '#040d14',
-      pressColor: '#2979ff'
+      pressColor: '#24C324'
     }
   ]
 
@@ -38,7 +38,7 @@ export default class MainMenu extends React.Component {
   }
 
   renderIcon = icon => ({ isActive }) => (
-      <Icon size={24} style={{ color: isActive ? '#2979ff' : 'white' }} name={icon} />
+      <Icon size={24} style={{ color: isActive ? '#24C324' : 'white' }} name={icon} />
   )
  
   renderTab = ({ tab, isActive }) => (
@@ -46,7 +46,7 @@ export default class MainMenu extends React.Component {
       isActive={isActive}
       key={tab.key}
       label={tab.label}
-      labelStyle={{ color: isActive ? '#2979ff' : 'white' }}
+      labelStyle={{ color: isActive ? '#24C324' : 'white' }}
       renderIcon={this.renderIcon(tab.icon)}
     />
   )
