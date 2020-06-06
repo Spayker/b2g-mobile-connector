@@ -5,12 +5,12 @@ import MainMenu from '../../mainMenu/mainMenu';
 
 
 const AppNavigator = createStackNavigator({
-  SignInEmail: {
-    screen: SignInEmail,
-    navigationOptions: { header: null }
-  },
   SignUpEmail: {
     screen: SignUpEmail,
+    navigationOptions: { header: null }
+  },
+  SignInEmail: {
+    screen: SignInEmail,
     navigationOptions: { header: null }
   },
   MainMenu: {

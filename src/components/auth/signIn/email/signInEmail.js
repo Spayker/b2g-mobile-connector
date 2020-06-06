@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, View, Image, Text, TextInput } from 'react-native';
+import { View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // import AsyncStorage from '@react-native-community/async-storage';
 import styles from "../../styles";
@@ -16,7 +16,7 @@ export default class SignInEmail extends React.Component {
 
           <Image style={styles.image} source={require('../../../../resources/b2gm_logo.png')} />
           
-          <Text style={styles.text}>Login</Text>
+          <Text style={styles.textHeader}>B2G</Text>
 
           <View style={styles.container}>
 
@@ -24,6 +24,7 @@ export default class SignInEmail extends React.Component {
               style={styles.dataInputText}
               editable={true}
               placeholder='E-mail'
+              placeholderTextColor= "#BDBDBD"
               name="email"
               type="email"
               id="email"
@@ -36,6 +37,7 @@ export default class SignInEmail extends React.Component {
               style={styles.dataInputText}
               editable={true}
               placeholder='Password'
+              placeholderTextColor= "#BDBDBD"
               name='password'
               type='password'
               id='password'
@@ -45,11 +47,15 @@ export default class SignInEmail extends React.Component {
               onChangeText={(passwordValue) => this.setState({passwordValue})}
               onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/>
 
-            <Button name="Login" title="Login" style={styles.loginButton} onPress={() => {this.props.navigation.navigate('MainMenu')}}/>
+            <TouchableOpacity
+                    style={styles.loginButton}
+                    onPress={() => this.props.navigation.navigate('MainMenu')}>
+                    <Text style={styles.loginButtonText}>Login</Text>
+            </TouchableOpacity>
 
           </View>
           
-          <View style={styles.textArea}>
+          <View style={styles.textAreaLoginLink}>
             <Text style={styles.link} onPress={() => {this.props.navigation.navigate('SignUpEmail')}}>Do not have an account?</Text>
           </View>
 

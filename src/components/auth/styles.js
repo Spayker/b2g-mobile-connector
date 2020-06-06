@@ -10,37 +10,54 @@ export default styles = StyleSheet.create({
 
     image:{
         alignSelf: "center",
-        marginTop: 115
+        marginTop: 105
     },
 
     container: {
-        marginTop: 160,
         flexDirection: "column",
         justifyContent: "space-between",
-        padding: 15
+        padding: 10
     },
 
     loginButton: {
-        color: "#24C324",
-        backgroundColor: "#24C324",
-        alignItems: 'center',
-        justifyContent: 'center'
+        marginTop: 10,
+        height: 65,
+        backgroundColor: "#158A15",
+        borderRadius:30,
+        alignItems: 'center'
     },
 
-    button: {
-        alignItems: 'center',
-        justifyContent: 'center'
+    loginButtonText: {
+        color: "#FFFFFF",
+        height: 65,
+        fontSize: 16,
+        paddingTop: 20,
+        alignItems: 'center'
     },
 
     spacing: {
         padding: 12
     },
 
-    textArea: {
-        paddingTop: 24,
+    textAreaLoginLink: {
+        paddingTop: 75,
         alignSelf: "center",
         flexDirection: "row",
         justifyContent: "space-between"
+    },
+
+    textAreaSignUpLink: {
+        paddingTop: 25,
+        alignSelf: "center",
+        flexDirection: "row",
+        justifyContent: "space-between"
+    },
+
+    textHeader: {
+        paddingTop: 25,
+        fontSize: 30,
+        color: "white",
+        alignSelf: "center",
     },
 
     text: {
@@ -48,14 +65,15 @@ export default styles = StyleSheet.create({
     },
 
     link:{
-        color: "#2979ff"
+        color: "#2AC940"
     },
 
     dataInputText:{
         fontSize: 20,
         textAlign: "left",
-        marginTop: 25,
-        borderColor: "#24C324",
+        height: 60,
+        marginTop: 10,
+        backgroundColor: "#333333",
         borderBottomWidth: 1
     }
 });
