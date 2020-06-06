@@ -1,12 +1,12 @@
 import { createStackNavigator } from 'react-navigation-stack';
-import Intro from '../../intro/intro';
+import SignInEmail from '../../auth/signIn/email/signInEmail';
 import SignUpEmail from '../../auth/signUp/email/signUpEmail';
 import MainMenu from '../../mainMenu/mainMenu';
 
 
 const AppNavigator = createStackNavigator({
-  Intro: {
-    screen: Intro,
+  SignInEmail: {
+    screen: SignInEmail,
     navigationOptions: { header: null }
   },
   SignUpEmail: {
@@ -17,7 +17,7 @@ const AppNavigator = createStackNavigator({
     screen: MainMenu,
     navigationOptions: { header: null }
   },
-  initialRouteName: 'Intro'
+  initialRouteName: 'SignInEmail'
 });
 
 export default AppNavigator;

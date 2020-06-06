@@ -2,9 +2,9 @@ import React from 'react'
 import { Button, View, Image, Text, TextInput } from 'react-native';
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // import AsyncStorage from '@react-native-community/async-storage';
-import styles from "./styles.js";
+import styles from "../../styles";
 
-export default class Intro extends React.Component {
+export default class SignInEmail extends React.Component {
 
   doSomeStuff(){
 
@@ -14,7 +14,7 @@ export default class Intro extends React.Component {
     return (
         <View style={styles.imageBackground} >
 
-          <Image style={styles.image} source={require('../../resources/b2gm_logo.png')} />
+          <Image style={styles.image} source={require('../../../../resources/b2gm_logo.png')} />
           
           <Text style={styles.text}>Login</Text>
 

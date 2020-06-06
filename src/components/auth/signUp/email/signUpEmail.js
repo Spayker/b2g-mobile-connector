@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, View, Image, Text, TextInput } from 'react-native';
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // import AsyncStorage from '@react-native-community/async-storage';
-import styles from "./styles.js";
+import styles from "../../styles.js";
 
 export default class SignUpEmail extends React.Component {
 
@@ -63,7 +63,7 @@ export default class SignUpEmail extends React.Component {
           </View>
           
           <View style={styles.textArea}>
-            <Text style={styles.link} onPress={() => {this.props.navigation.navigate('Intro')}}>Already have an account?</Text>
+            <Text style={styles.link} onPress={() => {this.props.navigation.navigate('SignInEmail')}}>Already have an account?</Text>
           </View>
 
         </View>
