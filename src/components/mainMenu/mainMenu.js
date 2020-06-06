@@ -5,7 +5,6 @@ import Home from './tab/home/home';
 import DeviceList from './tab/deviceList/deviceList';
 import Account from './tab/account/account';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import styles from "./styles.js";
 
 export default class MainMenu extends React.Component {
 
@@ -19,7 +18,7 @@ export default class MainMenu extends React.Component {
     },
     {
       key: 'deviceList',
-      icon: 'navigation',
+      icon: 'watch',
       label: 'Devices',
       barColor: '#040d14',
       pressColor: '#24C324'
