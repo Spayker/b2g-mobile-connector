@@ -11,7 +11,9 @@ export default styles = StyleSheet.create({
     
     containerSettings:{
         flexDirection: "column",
+        justifyContent: "space-between",
         backgroundColor: "#060403",
+        paddingTop: 15
     },
 
     containerImage:{
@@ -37,7 +39,7 @@ export default styles = StyleSheet.create({
 
     image:{
         alignSelf: "center",
-        marginTop: 64,
+        marginTop: 8,
         marginBottom: 16,
         width: 100,
         height: 100
@@ -46,7 +48,8 @@ export default styles = StyleSheet.create({
     containerInSection: {
         height: 50,
         borderRadius: 1,
-        borderBottomWidth: 0.2 
+        borderBottomWidth: 0.2,
+        borderColor:'white'
     },
 
     containerInnerSection: {
