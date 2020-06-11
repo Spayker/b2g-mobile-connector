@@ -1,13 +1,22 @@
 import React from 'react'
-import { View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
-// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-// import AsyncStorage from '@react-native-community/async-storage';
-import styles from "../../styles";
+import { View, Image, Text, TextInput, TouchableOpacity } from 'react-native'
+import StorageManager from '../../../common/storage/StorageManager'
+import styles from "../../styles"
 
 export default class SignInEmail extends React.Component {
 
-  doSomeStuff(){
+  constructor(props) {
+    super(props)
+    this.state = {
+      storageManager: new StorageManager()    
+    }
+    
+  }
 
+  componentDidMount = async () => { 
+    await this.state.storageManager.initDeviceData()
+    await this.state.storageManager.initServiceData()
+    await this.state.storageManager.initAccountData()
   }
 
   render() {

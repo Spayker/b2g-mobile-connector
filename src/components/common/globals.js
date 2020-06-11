@@ -16,11 +16,21 @@ export default {
 
     
     // Async Storage Keys
-    ACCESS_TOKEN_KEY: '@AccessToken',
+    ACCESS_TOKEN_KEY:   '@AccessToken',
     USERNAME_TOKEN_KEY: '@UserName',
     
+    // Device section
+    DEVICES_KEY:        '@Devices',
+
+    // Service section
+    SERVICES_KEY:       '@Services',
+
+    // Account section
+    ACCOUNTS_KEY:       '@Accounts',
+
     // AUTH PROCESS DATA
-    AUTHORIZED_STATE: 'authorized',
+    AUTHORIZED_STATE:   'authorized',
     UNAUTHORIZED_STATE: 'unauthorized'
+
 
 };
