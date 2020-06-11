@@ -64,6 +64,13 @@ export default styles = StyleSheet.create({
         paddingTop: 5
     },
 
+    searchButtonText: {
+        color: "#FFFFFF",
+        height: 65,
+        fontSize: 16,
+        paddingTop: 15
+    },
+
     listTrainingContainer:{
         flex: 1,
         flexDirection: "row",
