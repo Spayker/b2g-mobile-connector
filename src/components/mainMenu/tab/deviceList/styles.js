@@ -79,7 +79,8 @@ export default styles = StyleSheet.create({
         justifyContent: "space-between",
         backgroundColor: '#333333',
         borderRadius: 5,
-        padding: 15
+        padding: 15,
+        marginTop: 5
     },
 
     listTrainingColumnData:{
