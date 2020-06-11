@@ -2,11 +2,9 @@ import React from 'react'
 import { FlatList, View, Image, Text, TouchableOpacity } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import globals from '../../../common/globals'
-import StorageManager from '../../../common/storage/StorageManager'
 import DeviceConnector from './deviceConnector'
 import styles from './styles'
 
-const storageManager  = StorageManager.getInstance()
 const deviceConnector = DeviceConnector.getInstance()
 
 export default class DeviceList extends React.Component {
