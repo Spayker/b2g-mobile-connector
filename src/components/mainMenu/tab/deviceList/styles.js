@@ -47,6 +47,7 @@ export default styles = StyleSheet.create({
     },
 
     itemButtonDisabled: {
+        width: 75,
         height: 35,
         borderRadius: 30,
         backgroundColor: "grey",
