@@ -15,11 +15,8 @@ export default class StorageManager extends React.Component {
         return this.instance;
     }
 
-    getFoundDevices = async (deviceList) => {
-        try {
-            const devices = await AsyncStorage.getItem(globals.DEVICES_KEY)
-            deviceList.setState({foundDevices: devices})
-        } catch (error) { console.debug('couldn\'t save devices to storage because of: ' + error) }
+    getFoundDevices = async () => {
+        return await AsyncStorage.getItem(globals.DEVICES_KEY)
     }
 
     storeDevices = async (foundDevices) => {
