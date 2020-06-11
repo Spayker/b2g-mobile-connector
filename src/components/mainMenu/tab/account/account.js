@@ -1,7 +1,7 @@
 import React from 'react'
-import {View, Image, Text} from 'react-native';
+import {View, Image, Text, TouchableOpacity} from 'react-native';
 import FastImage from 'react-native-fast-image'
-import ReactNativeSettingsPage, { NavigateRow } from 'react-native-settings-page';
+import Icon from 'react-native-vector-icons/FontAwesome'
 import styles from './styles';
 
 export default class Account extends React.Component {
@@ -17,9 +17,9 @@ export default class Account extends React.Component {
 
     render() {
         return (
-            <ReactNativeSettingsPage>
+            <View style={styles.container}>
 
-                <View style={styles.container}>
+                <View style={styles.containerImage}>
                     
                     {this.state.picture === null ? (   
                         <Image style={styles.image} source={require('../../../../resources/user_pick.png')} />    
@@ -36,33 +36,67 @@ export default class Account extends React.Component {
                     <Text style={styles.contentTextHeader}>username</Text>
                     <Text style={styles.contentTextDescription}>user mailbox</Text>
                 </View>
-
-                <NavigateRow style={styles.contentTextHeader}
-                    text='Height'
-                    iconName='arrows-v'
-                    onPressCallback={() => {console.log()}} />
-
-                <NavigateRow style={styles.navigationRow}
-                    text='Weight'
-                    iconName='cubes'
-                    onPressCallback={() => {console.log()}} />
                 
-                <NavigateRow style={styles.navigationRow}
-                    text='Gender'
-                    iconName='intersex'
-                    onPressCallback={() => {console.log()}} />
+                <View style={styles.containerSettings}>
+                    <TouchableOpacity onPress={() => console.log()}>
+                        <View style={styles.containerInSection}>
+                            <View style={styles.containerInnerSection}>
+                                <Icon name={'arrows-v'} size={24} style={styles.iconLeft} />
+                                <Text style={styles.text} numberOfLines={1} ellipsizeMode={'tail'}>Height</Text>
+                                <Icon name={'angle-right'} size={24} style={styles.iconRight} />
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                </View>
 
-                <NavigateRow style={styles.navigationRow}
-                    text='Age'
-                    iconName='calendar'
-                    onPressCallback={() => {console.log()}} />
-                
-                <NavigateRow style={styles.navigationRow}
-                    text='Log out'
-                    iconName='sign-out'
-                    onPressCallback={() => {console.log()}} />
+                <View style={styles.containerSettings}>
+                    <TouchableOpacity onPress={() => console.log()}>
+                        <View style={styles.containerInSection}>
+                            <View style={styles.containerInnerSection}>
+                                <Icon name={'cubes'} size={24} style={styles.iconLeft} />
+                                <Text style={styles.text} numberOfLines={1} ellipsizeMode={'tail'}>Weight</Text>
+                                <Icon name={'angle-right'} size={24} style={styles.iconRight} />
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                </View>
 
-            </ReactNativeSettingsPage>
+                <View style={styles.containerSettings}>
+                    <TouchableOpacity onPress={() => console.log()}>
+                        <View style={styles.containerInSection}>
+                            <View style={styles.containerInnerSection}>
+                                <Icon name={'intersex'} size={24} style={styles.iconLeft} />
+                                <Text style={styles.text} numberOfLines={1} ellipsizeMode={'tail'}>Gender</Text>
+                                <Icon name={'angle-right'} size={24} style={styles.iconRight} />
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.containerSettings}>
+                    <TouchableOpacity onPress={() => console.log()}>
+                        <View style={styles.containerInSection}>
+                            <View style={styles.containerInnerSection}>
+                                <Icon name={'calendar'} size={24} style={styles.iconLeft} />
+                                <Text style={styles.text} numberOfLines={1} ellipsizeMode={'tail'}>Age</Text>
+                                <Icon name={'angle-right'} size={24} style={styles.iconRight} />
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.containerSettings}>
+                    <TouchableOpacity onPress={() => console.log()}>
+                        <View style={styles.containerInSection}>
+                            <View style={styles.containerInnerSection}>
+                                <Icon name={'sign-out'} size={24} style={styles.iconLeft} />
+                                <Text style={styles.text} numberOfLines={1} ellipsizeMode={'tail'}>Log out</Text>
+                                <Icon name={'angle-right'} size={24} style={styles.iconRight} />
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </View>
         );
     }
 
