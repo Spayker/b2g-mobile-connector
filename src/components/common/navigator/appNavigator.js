@@ -6,12 +6,12 @@ import ServiceMenu from '../../service/serviceMenu'
 
 
 const AppNavigator = createStackNavigator({
-  ServiceMenu: {
-    screen: ServiceMenu,
-    navigationOptions: { header: null }
-  },
   MainMenu: {
     screen: MainMenu,
+    navigationOptions: { header: null }
+  },
+  ServiceMenu: {
+    screen: ServiceMenu,
     navigationOptions: { header: null }
   },
   SignInEmail: {
