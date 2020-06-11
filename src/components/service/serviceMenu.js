@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, View, Image, Text, TouchableOpacity } from 'react-native'
+import { FlatList, View, Image, Text, TouchableOpacity, Switch } from 'react-native'
 import styles from './styles'
 
 
@@ -8,7 +8,18 @@ export default class ServiceMenu extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            services: [],
+            services: [
+                {
+                    'name':         'GE Wasp Server',
+                    'description':  'CTI related community',
+                    'enabled':      true
+                },
+                {
+                    'name':         'RU Wasp Server',
+                    'description':  'CTI related community',
+                    'enabled':      false
+                },
+            ],
             isConnectedWithMiBand: false
         }
     }
@@ -17,6 +28,8 @@ export default class ServiceMenu extends React.Component {
         console.log()
     }
 
+    doSmt = () => {}
+
     render() {
         return (
             <View style = {styles.container}>
@@ -24,35 +37,24 @@ export default class ServiceMenu extends React.Component {
                     data = {this.state.services}
                     renderItem = {
                         ({item}) => 
-                            item.deviceName === undefined ? (
+                            item.name === undefined ? (
                                 <View/>
                             ) : (
                                 <View style={styles.listTrainingContainer}>
                                     {/* <Image style={styles.image} source={require('../../../../resources/watch.png')} /> */}
                                     <View style={styles.listTrainingColumnData}>
-                                        <Text style={styles.item}>{item.deviceName}</Text>
-                                        <Text style={styles.item}>{item.deviceMac}</Text>
+                                        <Text style={styles.item}>{item.name}</Text>
+                                        <Text style={styles.item}>{item.description}</Text>
                                     </View>
 
-                                    {this.state.isConnectedWithMiBand ? (
-                                        <TouchableOpacity style={styles.itemButtonEnabled} onPress={() => this.unlinkBluetoothDevice()}>
-                                            <Text style={styles.buttonText}>Unlink</Text>
-                                        </TouchableOpacity>
-                                    ) : (
-                                        item.deviceName === 'Unknown Device' ? (
-                                            <TouchableOpacity style={styles.itemButtonDisabled} disabled={true}>
-                                                <Text style={styles.buttonText}>Link</Text>
-                                            </TouchableOpacity>
-                                        ) : (
-                                            <TouchableOpacity style={styles.itemButtonEnabled} onPress={() => this.linkWithDevice(item.deviceMac)}>
-                                                <Text style={styles.buttonText}>Link</Text>
-                                            </TouchableOpacity>
-                                        )
-                                    )}
+                                    <Switch trackColor={{ false: "#767577", true: "#24C324" }}
+                                            thumbColor={{ false: "#767577", true: "#24C324"}}
+                                            onValueChange = {() => this.doSmt()}
+                                            value = {item.enabled}/>
                                 </View>
                             )
                     }
-                    keyExtractor={item => item.deviceMac}
+                    keyExtractor={item => item.name}
                 />
 
                 <TouchableOpacity

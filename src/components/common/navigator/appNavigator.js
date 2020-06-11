@@ -6,6 +6,10 @@ import ServiceMenu from '../../service/serviceMenu'
 
 
 const AppNavigator = createStackNavigator({
+  ServiceMenu: {
+    screen: ServiceMenu,
+    navigationOptions: { header: null }
+  },
   MainMenu: {
     screen: MainMenu,
     navigationOptions: { header: null }
@@ -16,10 +20,6 @@ const AppNavigator = createStackNavigator({
   },
   SignUpEmail: {
     screen: SignUpEmail,
-    navigationOptions: { header: null }
-  },
-  ServiceMenu: {
-    screen: ServiceMenu,
     navigationOptions: { header: null }
   },
   initialRouteName: 'SignInEmail'
