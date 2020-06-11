@@ -34,8 +34,12 @@ export default class Home extends React.Component {
         }
     }
 
-    doSmt(training){
+    sendData(training){
         this.props.navigation.navigate('ServiceMenu', training)
+    }
+
+    addTrainings(){
+
     }
 
     render() {
@@ -49,7 +53,7 @@ export default class Home extends React.Component {
                         item.id === undefined ? (
                             <View/>
                         ) : (
-                            <TouchableOpacity style={styles.listTrainingContainer} onPress={(item) => this.doSmt()}>
+                            <TouchableOpacity style={styles.listTrainingContainer} onPress={(item) => this.sendData()}>
 
                                 {
                                     item.type === 'cycling' ? (
@@ -74,12 +78,13 @@ export default class Home extends React.Component {
 
                             </TouchableOpacity>
                         )
-
-
-                            
-                        
                     }
                     />
+                <TouchableOpacity
+                        style={styles.addTrainingButton}
+                        onPress={() => this.addTrainings()}>
+                        <Text style={styles.discoverDevicesButtonText}>Add Trainings</Text>
+                </TouchableOpacity>
             </View>
         );
     }

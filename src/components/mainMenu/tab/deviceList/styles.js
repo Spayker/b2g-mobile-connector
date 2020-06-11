@@ -20,7 +20,7 @@ export default styles = StyleSheet.create({
         alignSelf: "center",
     },
 
-    loginButton: {
+    discoverDevicesButton: {
         marginTop: 10,
         height: 65,
         backgroundColor: "#158A15",
@@ -65,11 +65,11 @@ export default styles = StyleSheet.create({
         paddingTop: 5
     },
 
-    searchButtonText: {
+    discoverDevicesButtonText: {
         color: "#FFFFFF",
         height: 65,
         fontSize: 16,
-        paddingTop: 15
+        paddingTop: 20
     },
 
     listTrainingContainer:{

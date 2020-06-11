@@ -68,9 +68,9 @@ export default class DeviceList extends React.Component {
                 />
 
                 <TouchableOpacity
-                        style={styles.loginButton}
+                        style={styles.discoverDevicesButton}
                         onPress={() => this.discoverDevices()}>
-                        <Text style={styles.searchButtonText}>Search</Text>
+                        <Text style={styles.discoverDevicesButtonText}>Search</Text>
                 </TouchableOpacity>
 
             </View>

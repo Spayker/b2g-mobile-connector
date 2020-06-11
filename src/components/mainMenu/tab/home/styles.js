@@ -31,6 +31,21 @@ export default styles = StyleSheet.create({
         marginTop: 5
     },
 
+    addTrainingButton: {
+        marginTop: 10,
+        height: 65,
+        backgroundColor: "#158A15",
+        borderRadius:30,
+        alignItems: 'center'
+    },
+
+    discoverDevicesButtonText: {
+        color: "#FFFFFF",
+        height: 65,
+        fontSize: 16,
+        paddingTop: 20
+    },
+
     listTrainingColumnData:{
         alignSelf: "center",
         flexDirection: "column",
