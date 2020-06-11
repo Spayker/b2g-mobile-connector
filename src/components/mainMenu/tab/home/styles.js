@@ -5,9 +5,8 @@ export default styles = StyleSheet.create({
     container:{
         flex: 1,
         justifyContent: "center",
-        backgroundColor: "#333333",
+        backgroundColor: "#060403",
         padding: 15,
-        paddingBottom: 75
     },
 
     contentTextDescription:{
@@ -19,27 +18,42 @@ export default styles = StyleSheet.create({
 
     image:{
         alignSelf: "center",
-        marginTop: 24,
-        marginBottom: 50
     },
 
-    listTrainingContainer:{
+    listTrainingContainer: {
         flex: 1,
         flexDirection: "row",
+        alignItems: 'center',
         justifyContent: "space-between",
+        backgroundColor: '#333333',
+        borderRadius: 5,
+        padding: 10,
+        marginTop: 5
+    },
+
+    addTrainingButton: {
+        marginTop: 10,
+        height: 65,
+        backgroundColor: "#158A15",
+        borderRadius:30,
+        alignItems: 'center'
+    },
+
+    discoverDevicesButtonText: {
+        color: "#FFFFFF",
+        height: 65,
+        fontSize: 16,
+        paddingTop: 20
     },
 
     listTrainingColumnData:{
         alignSelf: "center",
         flexDirection: "column",
-        justifyContent: "space-between",
     },
 
     item: {
-        padding: 10,
         fontSize: 18,
-        height: 44,
         color: "white",
-      }
+    }
 
 });
