@@ -1,77 +1,83 @@
 import React from 'react'
-import { FlatList, View, Image, Text, Button } from 'react-native';
-import styles from './styles';
+import { FlatList, View, Image, Text, TouchableOpacity } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
+import globals from '../../../common/globals'
+import StorageManager from '../../../common/storage/StorageManager'
+import DeviceConnector from './deviceConnector'
+import styles from './styles'
+
+const storageManager  = StorageManager.getInstance()
+const deviceConnector = DeviceConnector.getInstance()
 
 export default class DeviceList extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-        
+            foundDevices: [],
+            isConnectedWithMiBand: false
         }
+    }
+
+    discoverDevices = () => {
+        deviceConnector.discoverDevices(this)
+    }
+
+    linkWithDevice = (macAddress) => {
+        deviceConnector.linkWithDevice(this, macAddress)
+    }
+
+    componentDidMount = async () => { 
+        try {
+            console.debug('profile.jsx [componentDidMount]: ' + await AsyncStorage.getItem(globals.DEVICES_KEY))
+            this.setState({foundDevices: JSON.parse(await AsyncStorage.getItem(globals.DEVICES_KEY))})
+        } catch (error) { console.error("profile.jsx [componentDidMount]: error has occured. " + error) }
     }
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style = {styles.container}>
                 <FlatList
-                    data={[
-                        {
-                            deviceName: 'Device 1',
-                            deviceMac:  '00:11:22:33:44:55'
-                        },
-                        {
-                            deviceName: 'Device 2',
-                            deviceMac:  '00:11:22:33:44:55'
-                        },
-                        {
-                            deviceName: 'Device 3',
-                            deviceMac:  '00:11:22:33:44:55'
-                        },
-                        {
-                            deviceName: 'Device 4',
-                            deviceMac:  '00:11:22:33:44:55'
-                        },
-                        {
-                            deviceName: 'Device 5',
-                            deviceMac:  '00:11:22:33:44:55'
-                        },
-                        {
-                            deviceName: 'Device 6',
-                            deviceMac:  '00:11:22:33:44:55'
-                        },
-                        {
-                            deviceName: 'Device 7',
-                            deviceMac:  '00:11:22:33:44:55'
-                        },
-                        {
-                            deviceName: 'Device 8',
-                            deviceMac:  '00:11:22:33:44:55'
-                        },
-                        {
-                            deviceName: 'Device 9',
-                            deviceMac:  '00:11:22:33:44:55'
-                        },
-                        {
-                            deviceName: 'Device 0',
-                            deviceMac:  '00:11:22:33:44:55'
-                        }
-                    ]}
-                    renderItem={
+                    data = {this.state.foundDevices}
+                    renderItem = {
                         ({item}) => 
-                            <View style={styles.listTrainingContainer}>
-                                <Image style={styles.image} source={require('../../../../resources/watch.png')} />
-                                <View style={styles.listTrainingColumnData}>
-                                    <Text style={styles.item}>{item.deviceName}</Text>
-                                    <Text style={styles.item}>{item.deviceMac}</Text>
+                            item.deviceName === undefined ? (
+                                <View/>
+                            ) : (
+                                <View style={styles.listTrainingContainer}>
+                                    <Image style={styles.image} source={require('../../../../resources/watch.png')} />
+                                    <View style={styles.listTrainingColumnData}>
+                                        <Text style={styles.item}>{item.deviceName}</Text>
+                                        <Text style={styles.item}>{item.deviceMac}</Text>
+                                    </View>
+
+                                    {this.state.isConnectedWithMiBand ? (
+                                        <TouchableOpacity style={styles.itemButtonEnabled} onPress={() => this.unlinkBluetoothDevice()}>
+                                            <Text style={styles.buttonText}>Unlink</Text>
+                                        </TouchableOpacity>
+                                    ) : (
+                                        item.deviceName === 'Unknown Device' ? (
+                                            <TouchableOpacity style={styles.itemButtonDisabled} disabled={true}>
+                                                <Text style={styles.buttonText}>Link</Text>
+                                            </TouchableOpacity>
+                                        ) : (
+                                            <TouchableOpacity style={styles.itemButtonEnabled} onPress={() => this.linkWithDevice(item.deviceMac)}>
+                                                <Text style={styles.buttonText}>Link</Text>
+                                            </TouchableOpacity>
+                                        )
+                                    )}
                                 </View>
-                                <Button 
-                                    title='Link' 
-                                    onPress={() => console.console.log()}/>
-                            </View>
-                        
+                            )
                     }
-                    />
+                    keyExtractor={item => item.deviceMac}
+                />
+
+                <TouchableOpacity
+                        style={styles.loginButton}
+                        onPress={() => this.discoverDevices()}>
+                        <Text style={styles.buttonText}>Search</Text>
+                </TouchableOpacity>
+
             </View>
         );
     }
