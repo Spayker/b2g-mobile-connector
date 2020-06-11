@@ -57,15 +57,15 @@ export default class MainMenu extends React.Component {
           <View style={{ flex: 1 }}>            
             {
               this.state.activeTab == 'home' &&
-                <Home/>
+                <Home navigation = {this.props.navigation}/>
             }
             {
               this.state.activeTab == 'deviceList' &&
-                <DeviceList/>
+                <DeviceList navigation = {this.props.navigation}/>
             }
             {
               this.state.activeTab == 'account' &&
-                <Account/>
+                <Account navigation = {this.props.navigation}/>
             }
           </View>
           

@@ -35,7 +35,7 @@ export default class Home extends React.Component {
     }
 
     doSmt(training){
-        this.props.navigation.navigate('')
+        this.props.navigation.navigate('ServiceMenu', training)
     }
 
     render() {
