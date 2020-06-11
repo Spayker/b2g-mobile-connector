@@ -5,15 +5,13 @@ export default styles = StyleSheet.create({
     container:{
         flex: 1,
         flexDirection: "column",
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#060403",
         padding: 15,
     },
     
     containerSettings:{
-        flex: 1,
         flexDirection: "column",
-        backgroundColor: "#FFFFFF",
-        paddingTop: 15,
+        backgroundColor: "#060403",
     },
 
     containerImage:{
@@ -52,25 +50,26 @@ export default styles = StyleSheet.create({
     },
 
     containerInnerSection: {
-        flex: 1,
         flexDirection: 'row',
         alignItems: 'center'
     },
 
     iconRight: {
         flex: 1,
-        textAlign: 'center'
+        textAlign: 'center',
+        color: "white"
     },
     iconLeft: {
         flex: 1,
-        textAlign: 'center'
+        textAlign: 'center',
+        color: "white"
     },
 
     text: {
         flex: 6,
         flexDirection: 'row',
         fontSize: 15,
-        color: 'black'
+        color: '#FFFFFF'
     },
 
 
