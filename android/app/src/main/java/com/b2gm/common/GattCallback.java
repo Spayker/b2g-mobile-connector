@@ -50,8 +50,11 @@ public class GattCallback extends BluetoothGattCallback {
     private BluetoothGattDescriptor hrDescChar;
     private BluetoothGattCharacteristic batteryChar;
 
-    public GattCallback(HeartBeatMeasurer heartBeatMeasurer){
+    private boolean isPairedAlready;
+
+    public GattCallback(HeartBeatMeasurer heartBeatMeasurer, boolean isPairedAlready){
         this.heartBeatMeasurer = heartBeatMeasurer;
+        this.isPairedAlready = isPairedAlready;
     }
 
     @Override
@@ -71,6 +74,9 @@ public class GattCallback extends BluetoothGattCallback {
 
     @Override
     public void onServicesDiscovered(BluetoothGatt gatt, int status) {
+        if(isPairedAlready){
+            return;
+        }
         init(gatt);
         authoriseMiBand(gatt);
     }

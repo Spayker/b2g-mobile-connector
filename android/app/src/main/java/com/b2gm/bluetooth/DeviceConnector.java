@@ -51,7 +51,7 @@ public class DeviceConnector  extends ReactContextBaseJavaModule {
 
         HeartBeatMeasurerPackage hBMeasurerPackage = getModuleStorage().getHeartBeatMeasurerPackage();
         HeartBeatMeasurer heartBeatMeasurer = hBMeasurerPackage.getHeartBeatMeasurer();
-        gattCallback = new GattCallback(heartBeatMeasurer);
+        gattCallback = new GattCallback(heartBeatMeasurer, false);
     }
 
     /**
@@ -102,9 +102,9 @@ public class DeviceConnector  extends ReactContextBaseJavaModule {
      *                        process to send back a result of work.
      */
     @ReactMethod
-    public void linkWithDevice(String macAddress, Callback successCallback) {
+    public void linkWithDevice(String macAddress, boolean isPairedAlready, Callback successCallback) {
         currentDeviceMacAddress = macAddress;
-        updateBluetoothGatt();
+        updateBluetoothGatt(isPairedAlready);
         getModuleStorage().getHeartBeatMeasurerPackage()
                 .getHeartBeatMeasurer()
                 .updateBluetoothConfig(bluetoothGatt);
@@ -143,7 +143,7 @@ public class DeviceConnector  extends ReactContextBaseJavaModule {
         return DeviceConnector.class.getSimpleName();
     }
 
-    private void updateBluetoothGatt(){
+    private void updateBluetoothGatt(boolean isPairedAlready){
         Context mainContext = getReactApplicationContext().getCurrentActivity();
         bluetoothAdapter = ((BluetoothManager) Objects.requireNonNull(mainContext)
                 .getSystemService(BLUETOOTH_SERVICE))
@@ -153,7 +153,7 @@ public class DeviceConnector  extends ReactContextBaseJavaModule {
         setBluetoothDevice(device);
         HeartBeatMeasurerPackage hBMeasurerPackage = getModuleStorage().getHeartBeatMeasurerPackage();
         HeartBeatMeasurer heartBeatMeasurer = hBMeasurerPackage.getHeartBeatMeasurer();
-        gattCallback = new GattCallback(heartBeatMeasurer);
+        gattCallback = new GattCallback(heartBeatMeasurer, isPairedAlready);
         bluetoothGatt = bluetoothDevice.connectGatt(mainContext, true, gattCallback);
     }
 

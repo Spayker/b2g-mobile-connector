@@ -21,6 +21,7 @@ export default {
     
     // Device section
     DEVICES_KEY:        '@Devices',
+    PAIRED_DEVICES_KEY: '@PairedDevices',
 
     // Service section
     SERVICES_KEY:       '@Services',

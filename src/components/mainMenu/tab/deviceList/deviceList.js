@@ -25,6 +25,10 @@ export default class DeviceList extends React.Component {
         deviceConnector.linkWithDevice(this, macAddress)
     }
 
+    unlinkBluetoothDevice = () => {
+        deviceConnector.unlinkBluetoothDevice(this)
+    }
+
     componentDidMount = async () => { 
         this.setState({foundDevices: JSON.parse(await storageManager.getFoundDevices())})       
     }

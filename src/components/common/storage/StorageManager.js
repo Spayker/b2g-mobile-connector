@@ -30,6 +30,21 @@ export default class StorageManager extends React.Component {
         } catch (error) { console.debug('couldn\'t save devices to storage because of: ' + error) }
     }
 
+    getPairedDevices = async () => {
+        return await AsyncStorage.getItem(globals.PAIRED_DEVICES_KEY)
+    }
+
+    storePairedDevices = async (macAddress) => {
+        try {
+            let multiDataSet = [
+                [globals.PAIRED_DEVICES_KEY, macAddress]
+            ];
+            await AsyncStorage.multiSet(multiDataSet);
+            const savedPairedDevices = await AsyncStorage.getItem(globals.PAIRED_DEVICES_KEY)
+            console.log('savedPairedDevices: ' + savedPairedDevices)
+        } catch (error) { console.debug('couldn\'t save paired devices to storage because of: ' + error) }
+    }
+
     initDeviceData = async () => {
         const foundDevices = await AsyncStorage.getItem(globals.DEVICES_KEY);
         console.debug('foundDevices: ' + foundDevices)

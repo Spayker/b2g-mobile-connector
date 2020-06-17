@@ -31,10 +31,28 @@ export default class DeviceConnector extends React.Component {
         })
     }
 
-    linkWithDevice = (deviceList, macAddress) => {
-        NativeModules.DeviceConnector.linkWithDevice(macAddress, (error, data) => {
+    linkWithDevice = async (deviceList, macAddress) => {
+        const pairedMacAddress = await storageManager.getPairedDevices()
+        console.debug('deviceConnector.js [linkWithDevice]: macAddress - ' + JSON.stringify(macAddress))
+        console.debug('deviceConnector.js [linkWithDevice]: paired MAC address - ' + pairedMacAddress)
+        let isPaired = false
+        if(JSON.stringify(macAddress) === pairedMacAddress){
+            isPaired = true
+        }
+
+        console.debug('deviceConnector.js [linkWithDevice]: isPaired - ' + isPaired)
+
+        NativeModules.DeviceConnector.linkWithDevice(macAddress, isPaired, (error, data) => {
             deviceList.setState({ deviceBondLevel: data})
             deviceList.setState({ isConnectedWithMiBand: true})
+            storageManager.storePairedDevices(macAddress)
+        })
+    }
+
+    unlinkBluetoothDevice = (deviceList) => {
+        NativeModules.DeviceConnector.disconnectDevice( (error, deviceBondLevel) => {
+            deviceList.setState({ deviceBondLevel: deviceBondLevel});
+            deviceList.setState({ isConnectedWithMiBand: false})
         })
     }
 
