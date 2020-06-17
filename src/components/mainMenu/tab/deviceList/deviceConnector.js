@@ -33,10 +33,10 @@ export default class DeviceConnector extends React.Component {
 
     linkWithDevice = async (deviceList, macAddress) => {
         const pairedMacAddress = await storageManager.getPairedDevices()
-        console.debug('deviceConnector.js [linkWithDevice]: macAddress - ' + JSON.stringify(macAddress))
+        console.debug('deviceConnector.js [linkWithDevice]: macAddress - ' + macAddress)
         console.debug('deviceConnector.js [linkWithDevice]: paired MAC address - ' + pairedMacAddress)
         let isPaired = false
-        if(JSON.stringify(macAddress) === pairedMacAddress){
+        if(macAddress === pairedMacAddress){
             isPaired = true
         }
 

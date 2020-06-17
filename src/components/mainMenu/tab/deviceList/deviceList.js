@@ -60,7 +60,7 @@ export default class DeviceList extends React.Component {
                                                 <Text style={styles.buttonText}>Link</Text>
                                             </TouchableOpacity>
                                         ) : (
-                                            <TouchableOpacity style={styles.itemButtonEnabled} onPress={() => this.linkWithDevice(item.deviceMac)}>
+                                            <TouchableOpacity style={styles.itemButtonEnabled} onPress={() => this.linkWithDevice(item.deviceMac.replace(/['"]+/g, ''))}>
                                                 <Text style={styles.buttonText}>Link</Text>
                                             </TouchableOpacity>
                                         )
