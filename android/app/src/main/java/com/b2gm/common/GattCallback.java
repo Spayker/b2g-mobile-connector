@@ -75,6 +75,13 @@ public class GattCallback extends BluetoothGattCallback {
     @Override
     public void onServicesDiscovered(BluetoothGatt gatt, int status) {
         if(isPairedAlready){
+            BluetoothGattService service2 = gatt.getService(UUID.fromString(SERVICE2));
+            authChar = service2.getCharacteristic(UUID.fromString(CHAR_AUTH));
+            authChar.setValue(new byte[]{16, 2, 1});
+            executeAuthorisationSequence(gatt, authChar); //5
+            ModuleStorage moduleStorage = getModuleStorage();
+            infoReceiver = moduleStorage.getInfoPackage().getInfoReceiver();
+            infoReceiver.updateInfoChars(gatt);
             return;
         }
         init(gatt);
@@ -146,7 +153,7 @@ public class GattCallback extends BluetoothGattCallback {
         switch (characteristic.getUuid().toString()) {
             case CHAR_STEPS: {
                 infoReceiver.handleInfoData(characteristic.getValue());
-                gatt.readCharacteristic(batteryChar);
+                //gatt.readCharacteristic(batteryChar);
                 break;
             }
             case CHAR_BATTERY: {

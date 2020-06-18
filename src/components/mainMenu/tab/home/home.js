@@ -1,6 +1,9 @@
 import React from 'react'
 import { FlatList, View, Image, Text, TouchableOpacity} from 'react-native'
+import DeviceConnector from '../deviceList/deviceConnector'
 import styles from "./styles";
+
+const deviceConnector = DeviceConnector.getInstance()
 
 export default class Home extends React.Component {
 
@@ -30,7 +33,8 @@ export default class Home extends React.Component {
                     'dateTime':  '06/13/2020'
                 },
 
-            ]
+            ],
+            steps: 0
         }
     }
 
@@ -39,7 +43,7 @@ export default class Home extends React.Component {
     }
 
     addTrainings(){
-
+        deviceConnector.getDeviceInfo(this)
     }
 
     render() {
