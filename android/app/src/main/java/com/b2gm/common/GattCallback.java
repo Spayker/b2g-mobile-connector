@@ -153,7 +153,6 @@ public class GattCallback extends BluetoothGattCallback {
         switch (characteristic.getUuid().toString()) {
             case CHAR_STEPS: {
                 infoReceiver.handleInfoData(characteristic.getValue());
-                //gatt.readCharacteristic(batteryChar);
                 break;
             }
             case CHAR_BATTERY: {

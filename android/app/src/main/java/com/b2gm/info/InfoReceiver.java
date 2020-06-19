@@ -72,6 +72,9 @@ public class InfoReceiver extends ReactContextBaseJavaModule {
     public void handleInfoData(final byte[] value) {
         if(value != null){
             byte receivedSteps = value[1];
+            if(receivedSteps < 0){
+                receivedSteps = 0;
+            }
             steps = String.valueOf(receivedSteps);
         }
     }

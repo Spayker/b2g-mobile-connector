@@ -56,14 +56,12 @@ export default class DeviceConnector extends React.Component {
         })
     }
 
-    getDeviceInfo = (deviceList) => {
+    getDeviceInfo(deviceList) {
         NativeModules.InfoReceiver.getInfo((error, steps, battery) => {
-            console.debug('deviceConnector.js [getDeviceInfo]: before state steps - ' + deviceList.state.steps)
             console.debug('deviceConnector.js [getDeviceInfo]: steps - ' + steps)
             console.debug('deviceConnector.js [getDeviceInfo]: battery - ' + battery)
             deviceList.setState({ steps: steps})
-            console.debug('deviceConnector.js [getDeviceInfo]: after state steps - ' + deviceList.state.steps)
-            //deviceList.setState({ battery: battery})
+            deviceList.updateTrainingList()
         })
     }
 
