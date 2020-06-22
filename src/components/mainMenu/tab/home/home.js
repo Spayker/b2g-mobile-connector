@@ -10,30 +10,7 @@ export default class Home extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            trainings: [
-                // {
-                //     'id':        0,
-                //     'type':      'cycling',
-                //     'duration':  '300s',
-                //     'callories': '2500',
-                //     'dateTime':  '06/11/2020'
-                // },
-                // {
-                //     'id':        1,
-                //     'type':      'cycling',
-                //     'duration':  '200s',
-                //     'callories': '1500',
-                //     'dateTime':  '06/12/2020'
-                // },
-                // {
-                //     'id':        2,
-                //     'type':      'cycling',
-                //     'duration':  '400s',
-                //     'callories': '3500',
-                //     'dateTime':  '06/13/2020'
-                // },
-
-            ],
+            trainings: [],
             steps: 0
         }
     }

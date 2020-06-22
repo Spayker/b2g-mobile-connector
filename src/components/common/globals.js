@@ -14,6 +14,9 @@ export default {
     // http://148.251.138.115:6000/accounts/trainings/
     GE_SERVER_POST_NEW_TRAINING_URL_ADDRESS:    'http://148.251.138.115:6000/accounts/trainings/',
 
+
+    XIAOMI_LOGIN_URL: 'https://account.xiaomi.com/oauth2/authorize?skip_confirm=false&client_id=2882303761517383915&pt=0&scope=1+6000+16001+20000&redirect_uri=https%3A%2F%2Fhm.xiaomi.com%2Fwatch.do&_locale=en_US&response_type=code',
+
     
     // Async Storage Keys
     ACCESS_TOKEN_KEY:   '@AccessToken',

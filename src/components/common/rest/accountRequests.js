@@ -33,6 +33,29 @@ export default class AccountRequests extends React.Component {
         .catch((error) => { console.error(error) });
     }
 
+    getMiBandAuthKey = (email, password) => {
+        console.debug('Account getMiBandAuthKey: ' + email + ' ' + password)
+
+        return fetch(globals.XIAOMI_LOGIN_URL, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                        'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                
+            })
+        })
+        .then((response) => response.json())
+        .then((responseJson) => {
+            console.debug('account signUp: ' + responseJson)
+            this.getAccessToken(email, password)
+        })
+        .catch((error) => { console.error(error) });
+
+
+    }
+
     getAccessToken = (email, password) => {
         console.debug('Account getAccessToken: ' + email + ' ' + password)
         var details = {
