@@ -1,14 +1,33 @@
 import React from 'react'
-import { Button, View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
-// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-// import AsyncStorage from '@react-native-community/async-storage';
-import styles from "../../styles.js";
+import { Button, View, Image, Text, TextInput, TouchableOpacity } from 'react-native'
+// import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+// import AsyncStorage from '@react-native-community/async-storage'
+import AccountRequests from '../../../common/rest/accountRequests'
+import styles from '../../styles.js'
 
 export default class SignUpEmail extends React.Component {
 
-  doSomeStuff(){
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      emailValue: '',
+      passwordValue: '',
+      //confirmPasswordValue: '',
+      areFieldsFilled: false
+    }
+    
   }
+
+  signUp(){
+    accountRequestsObj = new AccountRequests()
+    // this.props.navigation.navigate('MainMenu')
+  }
+
+  areFieldsFilled(){
+    return this.state.emailValue != '' && this.state.passwordValue != '' // && this.state.confirmPasswordValue != ''
+  }
+
+  removeSpaces = (str) => { return str.replace(/\s/g, '') }
 
   render() {
     return (
@@ -28,7 +47,7 @@ export default class SignUpEmail extends React.Component {
               name="email"
               type="email"
               id="email"
-              //value={this.removeSpaces(this.state.emailValue)}
+              value={this.removeSpaces(this.state.emailValue)}
               onFocus={() => this.setState({ areFieldsFilled: false})}
               onChangeText={(emailValue) => this.setState({emailValue: this.removeSpaces(emailValue)})}
               onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/>
@@ -42,12 +61,12 @@ export default class SignUpEmail extends React.Component {
               type='password'
               id='password'
               secureTextEntry={true}
-              //value={this.state.passwordValue}
+              value={this.state.passwordValue}
               onFocus={() => this.setState({ areFieldsFilled: false})}
               onChangeText={(passwordValue) => this.setState({passwordValue})}
               onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/>
 
-            <TextInput
+            {/* <TextInput
               style={styles.dataInputText}
               editable={true}
               placeholder='Confirm Password'
@@ -56,14 +75,14 @@ export default class SignUpEmail extends React.Component {
               type='password'
               id='confirmPassword'
               secureTextEntry={true}
-              //value={this.state.passwordValue}
+              value={this.state.confirmPasswordValue}
               onFocus={() => this.setState({ areFieldsFilled: false})}
-              onChangeText={(passwordValue) => this.setState({passwordValue})}
-              onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/>
+              onChangeText={(confirmPasswordValue) => this.setState({confirmPasswordValue})}
+              onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/> */}
 
             <TouchableOpacity
                     style={styles.loginButton}
-                    onPress={() => this.props.navigation.navigate('MainMenu')}>
+                    onPress={() => this.signUp()}>
                     <Text style={styles.loginButtonText}>SignUp</Text>
             </TouchableOpacity>
 
