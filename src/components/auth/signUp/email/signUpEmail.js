@@ -18,9 +18,17 @@ export default class SignUpEmail extends React.Component {
     
   }
 
-  signUp(){
-    accountRequestsObj = new AccountRequests()
-    // this.props.navigation.navigate('MainMenu')
+  signUp = async () => {
+    try {
+      accountRequestsObj = new AccountRequests()
+      const status = await accountRequestsObj.signUp(this.state.emailValue, this.state.passwordValue)
+      console.debug('signUpEmail.js [signUp]: SignUp status finished ' + status)
+      if (status) {
+        this.props.navigation.navigate('MainMenu')
+      } else {
+        this.refs.toast.show('SignUp failed...', 1000);
+      }
+    } catch (error) { console.error("signUpEmail.js [signUp]: " + error) }
   }
 
   areFieldsFilled(){
