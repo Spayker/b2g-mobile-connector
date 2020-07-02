@@ -11,8 +11,8 @@ export default class SignUpEmail extends React.Component {
     super(props)
     this.state = {
       emailValue: '',
+      name: '',
       passwordValue: '',
-      //confirmPasswordValue: '',
       areFieldsFilled: false
     }
     
@@ -21,7 +21,7 @@ export default class SignUpEmail extends React.Component {
   signUp = async () => {
     try {
       accountRequestsObj = new AccountRequests()
-      const status = await accountRequestsObj.signUp(this.state.emailValue, this.state.passwordValue)
+      const status = await accountRequestsObj.signUp(this.state.emailValue, this.state.name, this.state.passwordValue)
       console.debug('signUpEmail.js [signUp]: SignUp status finished ' + status)
       if (status) {
         this.props.navigation.navigate('MainMenu')
@@ -32,7 +32,7 @@ export default class SignUpEmail extends React.Component {
   }
 
   areFieldsFilled(){
-    return this.state.emailValue != '' && this.state.passwordValue != '' // && this.state.confirmPasswordValue != ''
+    return this.state.emailValue != '' && this.state.passwordValue != '' // && this.state.name != ''
   }
 
   removeSpaces = (str) => { return str.replace(/\s/g, '') }
@@ -63,6 +63,20 @@ export default class SignUpEmail extends React.Component {
             <TextInput
               style={styles.dataInputText}
               editable={true}
+              placeholder='Name'
+              placeholderTextColor= "#BDBDBD"
+              name='name'
+              type='text'
+              id='name'
+              secureTextEntry={true}
+              value={this.state.name}
+              onFocus={() => this.setState({ areFieldsFilled: false})}
+              onChangeText={(name) => this.setState({name})}
+              onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/>
+
+            <TextInput
+              style={styles.dataInputText}
+              editable={true}
               placeholder='Password'
               placeholderTextColor= "#BDBDBD"
               name='password'
@@ -73,20 +87,6 @@ export default class SignUpEmail extends React.Component {
               onFocus={() => this.setState({ areFieldsFilled: false})}
               onChangeText={(passwordValue) => this.setState({passwordValue})}
               onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/>
-
-            {/* <TextInput
-              style={styles.dataInputText}
-              editable={true}
-              placeholder='Confirm Password'
-              placeholderTextColor= "#BDBDBD"
-              name='confirmPassword'
-              type='password'
-              id='confirmPassword'
-              secureTextEntry={true}
-              value={this.state.confirmPasswordValue}
-              onFocus={() => this.setState({ areFieldsFilled: false})}
-              onChangeText={(confirmPasswordValue) => this.setState({confirmPasswordValue})}
-              onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/> */}
 
             <TouchableOpacity
                     style={styles.loginButton}

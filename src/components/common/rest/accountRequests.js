@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 export default class AccountRequests extends React.Component {
 
-    signUp = (name, email, password) => {
+    signUp = (email, name, password) => {
         console.debug('Account signUp: ' + email + ' ' + password)
         return fetch(globals.GE_SERVER_CREATE_NEW_ACCOUNT_URL_ADDRESS, {
             method: 'POST',
@@ -14,7 +14,7 @@ export default class AccountRequests extends React.Component {
             },
             body: JSON.stringify({
                 id:	            -1,
-                name:           name,
+                name:           '',
                 email:          email,
                 createdDate:	null,
                 modifiedDate:	null,
