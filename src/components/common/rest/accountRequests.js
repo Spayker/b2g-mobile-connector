@@ -28,13 +28,14 @@ export default class AccountRequests extends React.Component {
         .then((response) => response.json())
         .then((responseJson) => {
             console.debug('account signUp: ' + responseJson)
+            this.storeAccountData(name, password)
             this.getAccessToken(email, password)
         })
         .catch((error) => { console.error(error) });
     }
 
     getAccessToken = (email, password) => {
-        console.debug('Account getAccessToken: ' + email + ' ' + password)
+        console.debug('Account getAccessToken email - ' + email + ' password - ' + password)
         var details = {
             "scope": "ui",
             "username": email,
@@ -61,8 +62,14 @@ export default class AccountRequests extends React.Component {
         })
         .then((response) => response.json())
         .then((responseJson) => { 
-            console.debug('account getAccessToken: ' + responseJson)
-            this.storeData(responseJson.access_token, email) 
+            console.debug('AccountRequests.js [getAccessToken]: response accessToken - ' + JSON.stringify(responseJson))
+            if(responseJson.access_token === undefined){
+                console.debug('AccountRequests.js [getAccessToken]: account login finished. Message - ' + responseJson.message)
+                return false
+            } else {
+                this.storeData(responseJson.access_token, email)
+                return true
+            }
         })
         .catch((error) => { console.error(error) });
     }
@@ -77,5 +84,20 @@ export default class AccountRequests extends React.Component {
             ];
             await AsyncStorage.multiSet(multiDataSet);
         } catch (error) { console.debug('couldn\'t save user access token to storage because of: ' + error) }
-    };
+    }
+
+    storeAccountData = async (name, password) => {
+        console.debug('account storeAccountData: name ' + name)
+        console.debug('account storeAccountData: password ' + password)
+
+        try {
+            let multiDataSet = [
+                [globals.ACCOUNT_NAME_KEY, name],
+                [globals.ACCOUNT_PASSWORD_KEY, password],
+            ];
+            await AsyncStorage.multiSet(multiDataSet);
+        } catch (error) { console.debug('couldn\'t save account data to storage because of: ' + error) }
+
+
+    }
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, View, Image, Text, TextInput, TouchableOpacity } from 'react-native'
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 // import AsyncStorage from '@react-native-community/async-storage'
+import Toast from 'react-native-easy-toast'
 import AccountRequests from '../../../common/rest/accountRequests'
 import styles from '../../styles.js'
 
@@ -10,9 +11,9 @@ export default class SignUpEmail extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      emailValue: '',
-      name: '',
-      passwordValue: '',
+      emailValue: 'spykerstar@gmail.com',
+      name: 'alex',
+      passwordValue: 'qwerty',
       areFieldsFilled: false
     }
     
@@ -20,7 +21,7 @@ export default class SignUpEmail extends React.Component {
 
   signUp = async () => {
     try {
-      accountRequestsObj = new AccountRequests()
+      var accountRequestsObj = new AccountRequests()
       const status = await accountRequestsObj.signUp(this.state.emailValue, this.state.name, this.state.passwordValue)
       console.debug('signUpEmail.js [signUp]: SignUp status finished ' + status)
       if (status) {
@@ -32,7 +33,7 @@ export default class SignUpEmail extends React.Component {
   }
 
   areFieldsFilled(){
-    return this.state.emailValue != '' && this.state.passwordValue != '' // && this.state.name != ''
+    return this.state.emailValue != '' && this.state.passwordValue != '' && this.state.name != ''
   }
 
   removeSpaces = (str) => { return str.replace(/\s/g, '') }
@@ -68,7 +69,6 @@ export default class SignUpEmail extends React.Component {
               name='name'
               type='text'
               id='name'
-              secureTextEntry={true}
               value={this.state.name}
               onFocus={() => this.setState({ areFieldsFilled: false})}
               onChangeText={(name) => this.setState({name})}
@@ -99,6 +99,8 @@ export default class SignUpEmail extends React.Component {
           <View style={styles.textAreaSignUpLink}>
             <Text style={styles.link} onPress={() => {this.props.navigation.navigate('SignInEmail')}}>Already have an account?</Text>
           </View>
+
+          <Toast ref="toast" positionValue={150}/>
 
         </View>
     );
