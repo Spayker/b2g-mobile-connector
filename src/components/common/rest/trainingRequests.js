@@ -1,12 +1,12 @@
 import React from 'react'
-import globals from "../globals.js";
+import globals from '../globals.js'
 
 export default class TrainingRequests extends React.Component {
 
     constructor(props) { super(props) }
 
     sendTrainingData = (username, userToken) => {
-        console.log('Training sendTrainingData: ' + username + ' ' + userToken)
+        console.log('trainingRequests.js [sendTrainingData]: username - ' + username + ' token - ' + userToken)
         return fetch(globals.GE_SERVER_POST_NEW_TRAINING_URL_ADDRESS, {
             method: 'POST',
             headers: this.trainingHeaderBuilder(userToken),

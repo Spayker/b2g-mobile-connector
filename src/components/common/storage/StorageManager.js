@@ -92,6 +92,10 @@ export default class StorageManager extends React.Component {
         return await AsyncStorage.getItem(globals.ACCOUNT_PASSWORD_KEY)
     }
 
+    getAccountToken = async () => {
+        return await AsyncStorage.getItem(globals.ACCESS_TOKEN_KEY)
+    }
+
 
 
 }

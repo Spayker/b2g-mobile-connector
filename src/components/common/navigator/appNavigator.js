@@ -10,16 +10,16 @@ const AppNavigator = createStackNavigator({
     screen: SignInEmail,
     navigationOptions: { header: null }
   },
+  MainMenu: {
+    screen: MainMenu,
+    navigationOptions: { header: null }
+  },
   SignUpEmail: {
     screen: SignUpEmail,
     navigationOptions: { header: null }
   },
   ServiceMenu: {
     screen: ServiceMenu,
-    navigationOptions: { header: null }
-  },
-  MainMenu: {
-    screen: MainMenu,
     navigationOptions: { header: null }
   },
   initialRouteName: 'SignInEmail'

@@ -1,5 +1,5 @@
 import React from 'react'
-import globals from "../globals.js";
+import globals from '../globals';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export default class AccountRequests extends React.Component {
@@ -71,7 +71,7 @@ export default class AccountRequests extends React.Component {
                 return true
             }
         })
-        .catch((error) => { console.error(error) });
+        .catch((error) => { console.error(error) })
     }
 
     storeData = async (userToken, email) => {
