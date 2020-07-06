@@ -27,7 +27,9 @@ export default {
     SERVICES_KEY:       '@Services',
 
     // Account section
-    ACCOUNTS_KEY:       '@Accounts',
+    ACCOUNTS_KEY:           '@Accounts',
+    ACCOUNT_NAME_KEY:       '@AccountName',
+    ACCOUNT_PASSWORD_KEY:   '@AccountPassword',
 
     // AUTH PROCESS DATA
     AUTHORIZED_STATE:   'authorized',

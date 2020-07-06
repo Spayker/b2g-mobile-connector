@@ -1,14 +1,42 @@
 import React from 'react'
-import { Button, View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
-// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-// import AsyncStorage from '@react-native-community/async-storage';
-import styles from "../../styles.js";
+import { Button, View, Image, Text, TextInput, TouchableOpacity } from 'react-native'
+// import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+// import AsyncStorage from '@react-native-community/async-storage'
+import Toast from 'react-native-easy-toast'
+import AccountRequests from '../../../common/rest/accountRequests'
+import styles from '../../styles.js'
 
 export default class SignUpEmail extends React.Component {
 
-  doSomeStuff(){
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      emailValue: 'spykerstar@gmail.com',
+      name: 'alex',
+      passwordValue: 'qwerty',
+      areFieldsFilled: false
+    }
+    
   }
+
+  signUp = async () => {
+    try {
+      var accountRequestsObj = new AccountRequests()
+      const status = await accountRequestsObj.signUp(this.state.emailValue, this.state.name, this.state.passwordValue)
+      console.debug('signUpEmail.js [signUp]: SignUp status finished ' + status)
+      if (status) {
+        this.props.navigation.navigate('MainMenu')
+      } else {
+        this.refs.toast.show('SignUp failed...', 1000);
+      }
+    } catch (error) { console.error("signUpEmail.js [signUp]: " + error) }
+  }
+
+  areFieldsFilled(){
+    return this.state.emailValue != '' && this.state.passwordValue != '' && this.state.name != ''
+  }
+
+  removeSpaces = (str) => { return str.replace(/\s/g, '') }
 
   render() {
     return (
@@ -28,9 +56,22 @@ export default class SignUpEmail extends React.Component {
               name="email"
               type="email"
               id="email"
-              //value={this.removeSpaces(this.state.emailValue)}
+              value={this.removeSpaces(this.state.emailValue)}
               onFocus={() => this.setState({ areFieldsFilled: false})}
               onChangeText={(emailValue) => this.setState({emailValue: this.removeSpaces(emailValue)})}
+              onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/>
+
+            <TextInput
+              style={styles.dataInputText}
+              editable={true}
+              placeholder='Name'
+              placeholderTextColor= "#BDBDBD"
+              name='name'
+              type='text'
+              id='name'
+              value={this.state.name}
+              onFocus={() => this.setState({ areFieldsFilled: false})}
+              onChangeText={(name) => this.setState({name})}
               onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/>
 
             <TextInput
@@ -42,28 +83,14 @@ export default class SignUpEmail extends React.Component {
               type='password'
               id='password'
               secureTextEntry={true}
-              //value={this.state.passwordValue}
-              onFocus={() => this.setState({ areFieldsFilled: false})}
-              onChangeText={(passwordValue) => this.setState({passwordValue})}
-              onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/>
-
-            <TextInput
-              style={styles.dataInputText}
-              editable={true}
-              placeholder='Confirm Password'
-              placeholderTextColor= "#BDBDBD"
-              name='confirmPassword'
-              type='password'
-              id='confirmPassword'
-              secureTextEntry={true}
-              //value={this.state.passwordValue}
+              value={this.state.passwordValue}
               onFocus={() => this.setState({ areFieldsFilled: false})}
               onChangeText={(passwordValue) => this.setState({passwordValue})}
               onSubmitEditing={() => this.setState({areFieldsFilled: this.areFieldsFilled()})}/>
 
             <TouchableOpacity
                     style={styles.loginButton}
-                    onPress={() => this.props.navigation.navigate('MainMenu')}>
+                    onPress={() => this.signUp()}>
                     <Text style={styles.loginButtonText}>SignUp</Text>
             </TouchableOpacity>
 
@@ -72,6 +99,8 @@ export default class SignUpEmail extends React.Component {
           <View style={styles.textAreaSignUpLink}>
             <Text style={styles.link} onPress={() => {this.props.navigation.navigate('SignInEmail')}}>Already have an account?</Text>
           </View>
+
+          <Toast ref="toast" positionValue={150}/>
 
         </View>
     );

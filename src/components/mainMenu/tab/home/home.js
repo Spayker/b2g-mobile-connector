@@ -11,27 +11,27 @@ export default class Home extends React.Component {
         super(props)
         this.state = {
             trainings: [
-                // {
-                //     'id':        0,
-                //     'type':      'cycling',
-                //     'duration':  '300s',
-                //     'callories': '2500',
-                //     'dateTime':  '06/11/2020'
-                // },
-                // {
-                //     'id':        1,
-                //     'type':      'cycling',
-                //     'duration':  '200s',
-                //     'callories': '1500',
-                //     'dateTime':  '06/12/2020'
-                // },
-                // {
-                //     'id':        2,
-                //     'type':      'cycling',
-                //     'duration':  '400s',
-                //     'callories': '3500',
-                //     'dateTime':  '06/13/2020'
-                // },
+                {
+                    'id':        0,
+                    'type':      'cycling',
+                    'duration':  '300s',
+                    'callories': '2500',
+                    'dateTime':  '06/11/2020'
+                },
+                {
+                    'id':        1,
+                    'type':      'cycling',
+                    'duration':  '200s',
+                    'callories': '1500',
+                    'dateTime':  '06/12/2020'
+                },
+                {
+                    'id':        2,
+                    'type':      'cycling',
+                    'duration':  '400s',
+                    'callories': '3500',
+                    'dateTime':  '06/13/2020'
+                }
 
             ],
             steps: 0
@@ -39,7 +39,7 @@ export default class Home extends React.Component {
     }
 
     sendData(training){
-        this.props.navigation.navigate('ServiceMenu', training)
+        this.props.navigation.navigate('ServiceMenu', { training: training })
     }
 
     addTrainings = async () => {
@@ -73,7 +73,7 @@ export default class Home extends React.Component {
                         item.id === undefined ? (
                             <View/>
                         ) : (
-                            <TouchableOpacity style={styles.listTrainingContainer} onPress={(item) => this.sendData()}>
+                            <TouchableOpacity style={styles.listTrainingContainer} onPress={(item) => this.sendData(item)}>
 
                                 {
                                     item.type === 'cycling' ? (

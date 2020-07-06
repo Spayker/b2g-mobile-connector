@@ -69,6 +69,7 @@ export default styles = StyleSheet.create({
     },
 
     dataInputText:{
+        color: "white",
         fontSize: 20,
         textAlign: "left",
         height: 60,
