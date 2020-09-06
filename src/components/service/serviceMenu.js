@@ -5,7 +5,9 @@ import TrainingRequests from '../common/rest/trainingRequests'
 import Toast from 'react-native-easy-toast'
 import styles from './styles'
 
-
+/**
+ * Service menu allows to select service(s) and transfer training data there.
+ */
 export default class ServiceMenu extends React.Component {
 
     constructor(props) {

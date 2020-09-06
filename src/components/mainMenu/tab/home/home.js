@@ -5,6 +5,10 @@ import styles from "./styles"
 
 const deviceConnector = DeviceConnector.getInstance()
 
+/**
+ * Home tab serves to show first and main tab with currently registered trainings.
+ *
+ */
 export default class Home extends React.Component {
 
     constructor(props) {

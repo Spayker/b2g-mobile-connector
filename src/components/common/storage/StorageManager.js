@@ -2,7 +2,10 @@ import React from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 import globals from '../globals'
 
-
+/**
+ * StorageManager component represents CRUD mechanic to work with async storage that is based on SQLite (for Android) db
+ * It helps to avoid data wipe out when user decided to do it implicitly.
+ */
 export default class StorageManager extends React.Component {
 
     static instance = null;
