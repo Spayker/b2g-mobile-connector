@@ -4,6 +4,9 @@ import FastImage from 'react-native-fast-image'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import styles from './styles';
 
+/**
+ * Account tab serves to show current settions of account
+ */
 export default class Account extends React.Component {
 
     constructor(props) {

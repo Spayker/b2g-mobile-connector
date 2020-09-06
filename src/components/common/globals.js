@@ -1,3 +1,6 @@
+/**
+ * Component with global constants to be used by all app components
+ */
 export default {
 
     // Server Dedicated Related Info

@@ -6,6 +6,9 @@ import DeviceList from './tab/deviceList/deviceList';
 import Account from './tab/account/account';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+/**
+ * Main menu component with 3 nested tabs: home, medialist, account
+ */
 export default class MainMenu extends React.Component {
 
   tabs = [

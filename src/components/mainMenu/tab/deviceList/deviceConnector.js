@@ -4,6 +4,11 @@ import StorageManager from '../../../common/storage/StorageManager'
 
 const storageManager  = StorageManager.getInstance()
 
+/**
+ * Device tab that shows currently known devices (bands, smart watches) around.
+ * Allows to connect to certain device, perform pairing and start getting device data.
+ * 
+ */
 export default class DeviceConnector extends React.Component {
 
     static instance = null;

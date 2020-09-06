@@ -5,6 +5,10 @@ import AccountRequests from '../../../common/rest/accountRequests'
 import Toast from 'react-native-easy-toast'
 import styles from '../../styles'
 
+/**
+ * Component describes sign in screen. Contains couple fields and link to Sign Up screen if an user has never been registered in system.
+ * 
+ */
 export default class SignInEmail extends React.Component {
 
   constructor(props) {
