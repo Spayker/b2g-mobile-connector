@@ -9,6 +9,9 @@ export default {
     // 148.251.138.115:6000/accounts/ 
     GE_SERVER_CREATE_NEW_ACCOUNT_URL_ADDRESS:  'http://148.251.138.115:6000/accounts/',
 
+    // B2GE GE base account url:
+    GE_SERVER_BASE_ACCOUNT_URL: 'http://148.251.138.115:5000',
+
     // B2G GE account: get account token
     // http://148.251.138.115:5000/mservicet/oauth/token
     GE_SERVER_GET_ACCOUNT_TOKEN_URL_ADDRESS:    'http://148.251.138.115:5000/mservicet/oauth/token',
