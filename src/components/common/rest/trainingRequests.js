@@ -1,5 +1,6 @@
 import React from 'react'
 import globals from '../globals.js'
+import APIKit from '../rest/apiKit'
 
 export default class TrainingRequests extends React.Component {
 
@@ -7,12 +8,13 @@ export default class TrainingRequests extends React.Component {
 
     sendTrainingData = (username, userToken) => {
         console.log('trainingRequests.js [sendTrainingData]: username - ' + username + ' token - ' + userToken)
-        return fetch(globals.GE_SERVER_POST_NEW_TRAINING_URL_ADDRESS, {
-            method: 'POST',
-            headers: this.trainingHeaderBuilder(userToken),
-            body:    this.trainingJsonBodyBuilder(username, new Date())
+
+        return APIKit.post(globals.GE_SERVER_POST_NEW_TRAINING_URL_ADDRESS, 
+            this.trainingJsonBodyBuilder(username, new Date()), 
+            { headers: this.trainingHeaderBuilder(userToken)
         })
-        .catch((error) => { console.error(error) });
+        .then(response => { return JSON.stringify(response.data) })
+        .catch((error) => { console.debug('trainingRequests.js [sendTrainingData] error - ' + error) });
     }
 
     trainingHeaderBuilder = (userToken) => {
