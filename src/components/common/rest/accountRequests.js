@@ -1,77 +1,75 @@
 import React from 'react'
-import globals from '../globals';
-import AsyncStorage from '@react-native-community/async-storage';
+import globals from '../globals'
+import AsyncStorage from '@react-native-community/async-storage'
+import APIKit from '../rest/apiKit'
 
 export default class AccountRequests extends React.Component {
 
     signUp = (email, name, password) => {
         console.debug('Account signUp: ' + email + ' ' + password)
-        return fetch(globals.GE_SERVER_CREATE_NEW_ACCOUNT_URL_ADDRESS, {
-            method: 'POST',
-            headers: {
+
+        const body = JSON.stringify({
+            id:	            -1,
+            name:           '',
+            email:          email,
+            createdDate:	null,
+            modifiedDate:	null,
+            age:			35,
+            gender:		    null,
+            weight:		    75,
+            height:		    175,
+            password:       password
+        })
+
+        return APIKit.post(globals.GE_SERVER_CREATE_NEW_ACCOUNT_URL_ADDRESS, body, { headers: {
                 Accept: 'application/json',
-                        'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                id:	            -1,
-                name:           '',
-                email:          email,
-                createdDate:	null,
-                modifiedDate:	null,
-                age:			35,
-                gender:		    null,
-                weight:		    75,
-                height:		    175,
-                password:       password
-            })
+                'Content-Type': 'application/json'
+            }
         })
-        .then((response) => response.json())
-        .then((responseJson) => {
-            console.debug('account signUp: ' + responseJson)
+        .then((response) => { 
+            const  data = response.data
+            console.debug('account signUp: ' + data)
             this.storeAccountData(name, password)
-            this.getAccessToken(email, password)
+            return this.getAccessToken(email, password)
         })
-        .catch((error) => { console.error(error) });
+        .catch(error => {console.debug('AccountRequests.js [signUp]: error - ' + error )})
     }
 
     getAccessToken = (email, password) => {
-        console.debug('Account getAccessToken email - ' + email + ' password - ' + password)
+        console.debug('AccountRequests.js [getAccessToken] email - ' + email)
         var details = {
             "scope": "ui",
             "username": email,
             "password": password,
             "grant_type": "client_credentials"
-        };
-        
-        var formBody = [];
-        for (var property in details) {
-          var encodedKey = encodeURIComponent(property);
-          var encodedValue = encodeURIComponent(details[property]);
-          formBody.push(encodedKey + "=" + encodedValue);
         }
-        formBody = formBody.join("&");
+        
+        var formBody = []
+        for (var property in details) {
+          var encodedKey = encodeURIComponent(property)
+          var encodedValue = encodeURIComponent(details[property])
+          formBody.push(encodedKey + "=" + encodedValue)
+        }
+        formBody = formBody.join("&")
 
-        return fetch(globals.GE_SERVER_GET_ACCOUNT_TOKEN_URL_ADDRESS, {
-            method: 'POST',
-            headers: {
-                Authorization: "Basic YnJvd3Nlcjo=",
-                Accept: "*/*", 
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: formBody
+        return APIKit.post(globals.GE_SERVER_GET_ACCOUNT_TOKEN_URL_ADDRESS, formBody, { headers: {
+                Authorization: 'Basic YnJvd3Nlcjo=',
+                Accept: '*/*',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
         })
-        .then((response) => response.json())
-        .then((responseJson) => { 
-            console.debug('AccountRequests.js [getAccessToken]: response accessToken - ' + JSON.stringify(responseJson))
-            if(responseJson.access_token === undefined){
-                console.debug('AccountRequests.js [getAccessToken]: account login finished. Message - ' + responseJson.message)
+        .then((response) => { 
+            const  data = response.data
+            console.debug('AccountRequests.js [getAccessToken]: response data - ' + JSON.stringify(data))
+            if(data.access_token === undefined){
+                console.debug('AccountRequests.js [getAccessToken]: account login finished. Message - ' + data.message)
                 return false
             } else {
-                this.storeData(responseJson.access_token, email)
+                this.storeData(data.access_token, email)
                 return true
             }
         })
-        .catch((error) => { console.error(error) })
+        .catch(error => {console.debug('AccountRequests.js [getAccessToken]: error - ' + error )})
     }
 
     storeData = async (userToken, email) => {
@@ -97,7 +95,6 @@ export default class AccountRequests extends React.Component {
             ];
             await AsyncStorage.multiSet(multiDataSet);
         } catch (error) { console.debug('couldn\'t save account data to storage because of: ' + error) }
-
-
     }
+
 }
