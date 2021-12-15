@@ -1,5 +1,5 @@
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Spayker/h2g-mobile-connector/blob/master/LICENSE)
-[![Build Status](https://app.travis-ci.com/Spayker/h2g-mobile-connector.svg?branch=main)](https://travis-ci.com/Spayker/h2g-mobile-connector.svg)
+[![Build Status](https://app.travis-ci.com/Spayker/h2g-mobile-connector.svg?branch=master)](https://travis-ci.com/Spayker/h2g-mobile-connector.svg)
 
 # H2G (Health 2 Game) Mobile Connector
 
