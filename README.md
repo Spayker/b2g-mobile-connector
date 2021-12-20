@@ -14,12 +14,13 @@ Client concept approximately looks:
 ## Architecture
 
 Simplified version of app architecture is shown below. The key difference here is approach to get sensor data.
-Instead of smart band cooperation, app takes data from smartphone sensor array by Google Fit API. </br>
+Instead of smart band cooperation, app takes data from smartphone sensor array by Android sensor framework. </br>
 
 ![alt text](resources/arch/H2G_mobile_connector_redesign.jpg)
 
 ## Technical Stack
 1) Java 11 (since min Android SDK is 28)
+2) Android sensor framework
 
 ## How To Run
 WIP
