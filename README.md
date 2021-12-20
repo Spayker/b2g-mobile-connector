@@ -14,7 +14,7 @@ Client concept approximately looks:
 ## Architecture
 
 Simplified version of app architecture is shown below. The key difference here is approach to get sensor data.
-Instead of smart band cooperation, app takes data from smartphone sensor array by Google Fit API. </br>
+Instead of smart band cooperation, app takes data from smartphone sensor array by Android sensor framework. </br>
 
 ![alt text](resources/arch/H2G_mobile_connector_redesign.jpg)
 
