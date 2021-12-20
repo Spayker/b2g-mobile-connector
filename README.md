@@ -20,6 +20,7 @@ Instead of smart band cooperation, app takes data from smartphone sensor array b
 
 ## Technical Stack
 1) Java 11 (since min Android SDK is 28)
+2) Android sensor framework
 
 ## How To Run
 WIP
