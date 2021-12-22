@@ -1,5 +1,6 @@
 package com.h2gm.activity.auth;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 
 import com.h2gm.R;
+import com.h2gm.activity.MainActivity;
 import com.h2gm.sensor.SensorDataGrabber;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,7 +70,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
      **/
     @Override
     public void onClick(View view) {
-
+        final Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -94,7 +97,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onBackPressed() {
-
+        final Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
 }
