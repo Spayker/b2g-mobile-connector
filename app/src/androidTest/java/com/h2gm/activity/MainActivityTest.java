@@ -1,4 +1,4 @@
-package com.h2gm;
+package com.h2gm.activity;
 
 
 import org.junit.Rule;
